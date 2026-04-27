@@ -1,0 +1,16 @@
+HTTP/1.1 201 Created
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Feature-Policy: payment 'self'
+X-Recruiting: /#/jobs
+Location: /api/Users/25
+Content-Type: application/json; charset=utf-8
+Content-Length: 326
+ETag: W/"146-sPFZM++okSMh2VZH4xxMmjSldM8"
+Vary: Accept-Encoding
+Date: Mon, 27 Apr 2026 12:17:38 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"status":"success","data":{"username":"","role":"customer","deluxeToken":"","lastLoginIp":"0.0.0.0","profileImage":"/assets/public/images/uploads/default.svg","isActive":true,"id":25,"email":"hw02-mass-20260427-1215@example.com","updatedAt":"2026-04-27T12:17:38.088Z","createdAt":"2026-04-27T12:17:38.088Z","deletedAt":null}}
