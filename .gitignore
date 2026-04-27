@@ -13,6 +13,7 @@ __pycache__/
 *.swo
 .vscode/
 .idea/
+notes/
 
 # Sensitive/local temporary files
 *.har

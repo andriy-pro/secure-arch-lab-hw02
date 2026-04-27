@@ -50,17 +50,17 @@
 
 ### 2. IDOR / BOLA на `GET /rest/basket/{id}`
 
-**Що перевірялось:** спочатку контрольний доступ користувача B з `TOKEN_B` до власного basket ID 7, потім доступ тим самим `TOKEN_B` до basket ID 6 іншого користувача.
+**Що перевірялось:** спочатку контрольний доступ користувача A з `TOKEN_A` до власного basket ID 6, потім доступ тим самим `TOKEN_A` до basket ID 7 іншого користувача.
 
-**Що показав результат:** контрольний запит до власного basket ID 7 повернув `200 OK`. Після цього запит з тим самим токеном користувача B до чужого basket ID 6 також повернув `200 OK`, що показує відсутність перевірки ownership для конкретного кошика.
+**Що показав результат:** контрольний запит до власного basket ID 6 повернув `200 OK`. Після цього запит з тим самим токеном користувача A до чужого basket ID 7 також повернув `200 OK`, що показує відсутність перевірки ownership для конкретного кошика.
 
 **Чому це небезпечно:** JWT підтверджує, хто виконує запит, але API додатково має перевіряти право доступу до конкретного об'єкта. Якщо цього немає, користувач може перебирати ID і читати чужі ресурси.
 
 **STRIDE/CWE:** Information Disclosure, CWE-639 Authorization Bypass Through User-Controlled Key.
 
 **Підтвердження:**
-![Користувач B отримує чужий кошик з ID "6"](evidence/screenshots/04-a-basket-access-check-6.png)
-![Контрольний доступ користувача B до власного кошика з ID "7"](evidence/screenshots/04-b-basket-access-check-7.png)
+![Контрольний доступ користувача A до власного кошика з ID "6"](evidence/screenshots/04-a-basket-access-check-6.png)
+![Користувач A отримує чужий кошик з ID "7"](evidence/screenshots/04-b-basket-access-check-7.png)
 
 - `evidence/http/08-basket-7-with-token.txt`
 - `evidence/http/08b-basket-6-with-user-b-token.txt`
@@ -152,11 +152,11 @@ C. `evidence/screenshots/03-api-users-response.png` - `/api/Users` поверт�
 
 ![API users response](evidence/screenshots/03-api-users-response.png)
 
-D. `evidence/screenshots/04-a-basket-access-check-6.png` - користувач B з `TOKEN_B` отримує basket ID 6 іншого користувача.
+D. `evidence/screenshots/04-a-basket-access-check-6.png` - користувач A з `TOKEN_A` отримує власний basket ID 6 як контрольний запит.
 
 ![Доступ до кошика 6](evidence/screenshots/04-a-basket-access-check-6.png)
 
-E. `evidence/screenshots/04-b-basket-access-check-7.png` - користувач B з `TOKEN_B` отримує власний basket ID 7 як контрольний запит.
+E. `evidence/screenshots/04-b-basket-access-check-7.png` - користувач A з `TOKEN_A` отримує власний basket ID 7 іншого користувача.
 
 ![Доступ до кошика 7](evidence/screenshots/04-b-basket-access-check-7.png)
 
